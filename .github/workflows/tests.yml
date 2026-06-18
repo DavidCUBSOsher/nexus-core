@@ -1,0 +1,17 @@
+name: Pruebas automáticas Nexus Core
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+      - name: Instalar dependencias
+        run: pip install flask pytest
+      - name: Correr pruebas
+        run: pytest -v
